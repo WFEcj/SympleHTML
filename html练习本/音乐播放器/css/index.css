@@ -1,0 +1,156 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    background-image: url('../beach.jpg') ;
+    background-size: 100%;
+    width: 100vw;
+    height: 100vh;
+}
+.time-select{
+    display: inline-block;
+    width: 33%;
+    height: 80%;
+    position: relative;
+    top: 10%;
+    overflow: hidden;  
+    vertical-align: top;
+}
+.time-select button{
+    display: block;
+    height: 80px;
+    width: 160px;
+    border: 1px solid #fff;
+    background: none;
+    margin: 0 auto;
+    margin-top: 100px; 
+    border-radius: 5px;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+.time-select button:hover{
+    background: #fff;
+    color: #000;
+    transition: all 0.3s ease;
+}
+.play-control{
+    display: inline-block;
+    width: 33%;
+    height: 80%;
+    position: relative;
+    top: 10%;
+    vertical-align: top;
+}
+.play-control .play,
+.play-control .circle{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    cursor: pointer;
+}
+.play-control .circle{
+    height: 50%;
+}
+.sound-select{
+    display: inline-block;
+    width: 33%;
+    height: 80%;
+    position: relative;
+    top: 10%;
+    vertical-align: top;
+}
+.sound-select button{
+    display: block;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-top: 120px; 
+    cursor: pointer;
+}
+.sound-select button:nth-child(1){
+    background: #4972a1;
+}
+.sound-select button:nth-child(2){
+    background: #a14f49;
+}
+.sound-select button img{
+    height: 50%;
+}
+.container .time{
+    width: 100%;
+    font-size: 50px;
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    bottom: 10%;
+}
+.container .top-music{
+    width: 150px;
+    height: 100px;
+    margin-left: 380px;
+    padding-top: 40px;
+    height: 30px;
+    overflow: hidden;
+    /* width: 160px; */
+    position: fixed;
+    z-index: 9;
+}
+.container .top-music:hover{
+    height: 80px;
+    padding-bottom: 80px;
+    transition: all 0.3s ease-in-out;
+}
+.container .top-music a{
+    margin-left: 30px;
+    font-size: 18px;
+    text-decoration: none;
+    color: #fff;
+}
+.container .top-music .item{
+    margin-top: -20px;
+}
+.container .top-music .item .item-list{
+    width: 350px;
+    margin-left: -60px;
+}
+.container .top-music .item .item-list li{
+    width: 250px;
+    height: 25px;
+    line-height: 25px;
+    /* background-color: rgba(255, 255, 255, 0.7); */
+    /* border-radius: 3px; */
+    /* list-style: none; */
+}
+.container .top-music .item .item-list img{
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+.container .top-music .item .item-list button{
+    margin-left: 70px;
+    text-align: left;
+    width: 250px;
+    height: 25px;;
+    line-height: 20px;
+    outline: 0;
+    border: 0;
+    background-color: rgba(255, 255, 255, 0);
+    /* border-image: url('../svg/point.svg') 30 30 round; */
+    color: #fff;
+    cursor: pointer; 
+}
+.container .now-music{
+    text-align: center;
+}
+.container .now-music #tip {
+    color: #fff;
+    font-size: 18px;
+    position: absolute;
+    top:40px;
+    left: 680px;
+}

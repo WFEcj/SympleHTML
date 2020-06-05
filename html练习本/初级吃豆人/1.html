@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            background-color:#000;
+        }
+        #world{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 0;
+            transform: translateX(-50%) translateY(-50%);
+        }
+        #world > div{
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+        }
+        .wall{
+            background-image: url("./image/wall.png");
+        }
+        .coin{
+            background-image: url("./image/coin.png");
+        }
+        .ground{
+            background-image: url("./image/ground.png");
+        }
+        .pacmanRight{
+            background-image: url("./image/pacman.png");
+        }
+        .pacmanLeft{
+            background-image: url("./image/pacman-Left.png");
+        }
+        .pacmanUp{
+            background-image: url("./image/pacman-Up.png");
+        }
+        .pacmanDown{
+            background-image: url("./image/pacman-Down.png");
+        }
+    </style>
+</head>
+<body>
+    <div id="world">
+
+    </div>
+    <script>
+        var world=document.getElementById("world");
+        var map = [
+            [1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,2,2,4,2,2,2,2,2,2,2,1],
+            [1,2,2,2,2,1,1,2,1,2,2,1],
+            [1,2,2,1,2,2,2,2,1,1,2,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1]
+        ];
+        var pacman={
+            x:1,
+            y:3,
+            dir:"Right"
+        }
+        function draw(){
+            var html="";
+            for(var i = 0;i < map.length;i++){
+                for(var j=0;j<map[i].length;j++){
+                    if(map[i][j]===1){
+                        html+='<div class="wall"></div>';
+                    }else if(map[i][j]===2){
+                        html+='<div class="coin"></div>';
+                    }else if(map[i][j]===3){
+                        html+='<div class="ground"></div>';
+                    }else if(map[i][j]===4){
+                        html+='<div class="pacman'+pacman.dir+'"></div>';
+                    }
+                }
+                html+='<br>';
+                world.innerHTML=html; 
+            } 
+        }
+        draw();
+        document.onkeydown = function(event){
+            if(event.key === "ArrowRight"){
+                if(map[pacman.x][pacman.y+1]!=1){
+                    map[pacman.x][pacman.y]=3;
+                    pacman.y+=1;
+                    map[pacman.x][pacman.y]=4;
+                    pacman.dir="Right";
+                }
+            }
+            if(event.key === "ArrowLeft"){
+                if(map[pacman.x][pacman.y-1]!=1){
+                    map[pacman.x][pacman.y]=3;
+                    pacman.y-=1;
+                    map[pacman.x][pacman.y]=4;
+                    pacman.dir="Left";
+                } 
+            }
+            if(event.key === "ArrowUp"){
+                if(map[pacman.x-1][pacman.y]!=1){
+                    map[pacman.x][pacman.y]=3;
+                    pacman.x-=1;
+                    map[pacman.x][pacman.y]=4;
+                    pacman.dir="Up";
+                }
+            }
+            if(event.key === "ArrowDown"){
+                if(map[pacman.x+1][pacman.y]!=1){
+                    map[pacman.x][pacman.y]=3;
+                    pacman.x+=1;
+                    map[pacman.x][pacman.y]=4;
+                    pacman.dir="Down";
+                } 
+            }
+            draw();
+        }
+    </script>
+</body>
+</html>

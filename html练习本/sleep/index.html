@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .app{
+            background-image: url(./rain.jpg);
+            width: 100vw;
+            height: 100vh;
+            background-size: 100%;
+        }
+        .time-select,
+        .play-control,
+        .sound-select{
+            width: 33%;
+            display: inline-block;
+            height: 80%;
+            vertical-align: top;
+            position: relative;
+            top:10%;
+        }
+        .time-select button{
+            height: 80px;
+            width: 160px;
+            display: block;
+            border: 2px solid white;
+            background: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 20px;
+            margin: 0 auto;
+            margin-top: 100px;
+            outline: none;
+            cursor: pointer;
+            transition: all 0.5s;
+        }
+        .time-select button:hover{
+            color: black;
+            background: white;
+        }
+        .play-control img{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+        .play-control .play{
+            z-index: 10;
+        }
+        .play-control .circle{
+            height: 50%;
+        }
+        .time-display{
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 50px;
+            position: absolute;
+            bottom: 10%;
+        }
+        .sound-select button{
+            height: 120px;
+            width: 120px;
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto;
+            margin-top: 120px;
+        }
+        .sound-select button:nth-child(1){
+            background: #4972a1;
+        }
+        .sound-select button:nth-child(2){
+            background: #a14f49;
+        }
+        .sound-select button img{
+            height: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <div class="time-select">
+            <button class="time-btn" data-time="10">2 分钟</button>
+            <button class="time-btn" data-time="300">5 分钟</button>
+            <button class="time-btn" data-time="600">10 分钟</button>
+        </div>
+        <div class="play-control">
+            <audio class="song" src="./sounds/rain.mp3"></audio>
+            <img class="play" src="./svg/play.svg" alt="">
+            <img class="circle" src="./svg/track-outline.svg" alt="">
+            <h3 class="time-display">00 : 00</h3>
+        </div>
+        <div class="sound-select">
+            <button class="sounds" data-img="./rain.jpg" data-sound = "./sounds/rain.mp3"><img src="./svg/rain.svg" alt=""></button>
+            <button class="sounds" data-img="./beach.jpg" data-sound = "./sounds/beach.mp3"><img src="./svg/beach.svg" alt=""></button>
+        </div>
+    </div>
+    <script>
+        var timeDisplay = document.getElementsByClassName("time-display")[0];
+        var play = document.getElementsByClassName("play")[0];
+        var song = document.getElementsByClassName("song")[0];
+        var sounds = document.getElementsByClassName("sounds");
+        var app = document.getElementsByClassName("app")[0];
+        var timeBtn = document.getElementsByClassName("time-btn");
+        var total = 600;
+        var time = 600;
+        var timer;
+        for(var j = 0 ;j < timeBtn.length;j++){
+            timeBtn[j].addEventListener("click",function(){
+                total = this.dataset.time;
+                time = total;
+                formatTime();
+            })
+        }
+        for(var i = 0;i < sounds.length;i++){
+            sounds[i].addEventListener("click",function(){
+                song.src = this.dataset.sound;
+                app.style.backgroundImage = "url("+this.dataset.img+")";
+                clearInterval(timer);
+                time = total;
+                formatTime();
+                checkPlay();
+            })
+        }
+        play.addEventListener("click",function(){
+            checkPlay();
+        })
+        function checkPlay(){
+            if(song.paused){
+                song.play();
+                play.src = "./svg/pause.svg";
+                timer = setInterval(function(){
+                    time--;
+                    formatTime();
+                    if(time === 0){
+                        clearInterval(timer);
+                        song.pause();
+                        play.src = "./svg/play.svg";
+                        time = total;
+                        formatTime();
+                    }
+                },1000)
+            }else{
+                clearInterval(timer);
+                song.pause();
+                play.src = "./svg/play.svg";
+            }
+        }
+        function formatTime(){
+            var min = Math.floor(time / 60);
+            var sec = time - min * 60;
+            if(min < 10){
+                min = "0" + min;
+            }
+            if(sec < 10){
+                sec = "0" + sec;
+            }
+            timeDisplay.innerText = min + " : " + sec;
+        }
+        formatTime();
+    </script>
+</body>
+</html>

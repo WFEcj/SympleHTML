@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="now-music">
+            <p id="tip">正在播放: beach</p>
+        </div>
+        <div class="top-music">
+            <a href="">音乐排行榜</a>
+            <div class="item">
+                <ul class="item-list">
+                    <li><button data-name="薛之谦 - 演员" data-sound="./sounds/薛之谦 - 演员.mp3" class="music"><img src="./svg/music.svg" alt="">薛之谦 - 演员</button></li>
+                    <li><button data-name="梦然 - 少年" data-sound="./sounds/梦然 - 少年.mp3" class="music"><img src="./svg/music.svg" alt="">梦然 - 少年</button></li>
+                    <li><button data-name="许嵩 - 千百度" data-sound="./sounds/许嵩 - 千百度.mp3" class="music"><img src="./svg/music.svg" alt="">许嵩 - 千百度</button></li>
+                    <li><button data-name="许嵩 - 如果当时" data-sound="./sounds/许嵩 - 如果当时.mp3" class="music"><img src="./svg/music.svg" alt="">许嵩 - 如果当时</button></li>
+                    <li><button data-name="Kalafina (カラフィナ) - oblivious" data-sound="./sounds/Kalafina (カラフィナ) - oblivious.flac" class="music"><img src="./svg/music.svg" alt="">Kalafina (カラフィナ) - oblivious</button></li>
+                </ul>
+            </div>
+        </div>
+        <div class="time-select">
+            <button data-time="120" class="btn1">2分钟</button>
+            <button data-time="300" class="btn1">5分钟</button>
+            <button data-time="600"class="btn1">10分钟</buttom>
+        </div>
+        <div class="play-control">
+            <audio class="song" src="./sounds/beach.mp3"></audio>
+            <img class="circle" src="./svg/moving-outline.svg" alt="">
+            <img class="play" src="./svg/play.svg" alt="">
+        </div>
+        <div class="sound-select">
+            <button data-name="rain" data-img="./rain.jpg" data-sound="./sounds/rain.mp3" class="btn2"><img src="./svg/rain.svg" alt=""></button>
+            <button data-name="beach" data-img="./beach.jpg" data-sound="./sounds/beach.mp3" class="btn2"><img src="./svg/beach.svg" alt=""></button>
+        </div>
+        <h3 class="time">10:00</h3>
+    </div>
+    <script src="./js/index.js"></script>
+</body>
+</html>

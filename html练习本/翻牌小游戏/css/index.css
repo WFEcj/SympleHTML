@@ -1,0 +1,43 @@
+body{
+    margin: 0;
+    background-color: skyblue;
+}
+.container{
+    font-size: 0;
+    width: 640px;
+    height: 640px;
+    font-size: 0;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+.container .photo{
+    position: relative;
+    width: 150px;
+    height: 200px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    margin: 3px;
+    transform-style: preserve-3d;
+}
+.container .photo:active{
+    transform: scale(0.97);
+    transition: transform 0.3s ease;
+}
+.container .flip{
+    transform: rotateY(180deg);
+    transition: transform 0.3s ease;
+}
+.front-face,
+.back-face{
+    position: absolute;
+    top: 0;
+    width: 150px;
+    height: 200px;
+    margin: 0 auto;
+    backface-visibility: hidden;
+}
+.front-face{
+    transform: rotateY(180deg);
+}
+
